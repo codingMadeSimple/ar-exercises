@@ -14,13 +14,13 @@ puts "----------"
 puts "Please enter a store name: "
 store_name = gets.chomp
 
-Store.create(name: store_name)
+new_store=Store.create(name: store_name)
 
-if Store.save
-  puts "Saved store successfully"
-else
-  puts "An error occured when trying to create a store"
-  Store.errors.full_message.each do |error|
-    puts error
-end
+  if new_store.save
+    puts "Saved store successfully"
+  else
+    puts "An error occured when trying to create a store"
+    new_store.errors.each do |error_message|
+      puts "\n#{error_message}"
+  end
 end
